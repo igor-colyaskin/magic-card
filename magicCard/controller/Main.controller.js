@@ -3,19 +3,15 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
 
   return Controller.extend('magic.card.controller.Main', {
     onInit: function () {
-      console.log('--- 3. Controller: onInit начат')
       var oComponent = this.getOwnerComponent()
 
-      // Если компонент уже готов
       if (oComponent.getCard()) {
-        console.log('--- 4. Controller: Карточка УЖЕ была в наличии. Загружаем данные сразу.')
         this._loadData()
       } else {
-        console.warn('--- 4. Controller: Карточки еще НЕТ. Уходим в режим ожидания (setTimeout).')
         setTimeout(this._loadData.bind(this), 1000)
       }
     },
-
+    // stamdard loading for cards, works only with destinations
     // _loadData: function () {
     //   console.log('--- 5. Controller: Вызов _loadData запущен')
     //   var oComponent = this.getOwnerComponent()
@@ -49,7 +45,6 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
 
     _loadData: function () {
       var oView = this.getView()
-      console.log('--- 5. Controller: Вызов _loadData запущен')
 
       // Вместо oCard.request используем стандартный механизм загрузки JSONModel
       var oModel = new JSONModel()
