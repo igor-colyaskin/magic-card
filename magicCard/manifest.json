@@ -19,6 +19,11 @@
         },
         "dependencies": {
             "libs": { "sap.m": {} }
-        }
+        },
+        "models": {
+			"": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		}
     }
 }

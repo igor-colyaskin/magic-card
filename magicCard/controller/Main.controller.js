@@ -11,7 +11,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
         setTimeout(this._loadData.bind(this), 1000)
       }
     },
-    // stamdard loading for cards, works only with destinations
+    // standard loading for cards, works only with destinations
     // _loadData: function () {
     //   console.log('--- 5. Controller: Вызов _loadData запущен')
     //   var oComponent = this.getOwnerComponent()
@@ -44,13 +44,11 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
     // },
 
     _loadData: function () {
-      var oView = this.getView()
-
+      const oView = this.getView()
+      const oModel = oView.getModel()
       // Вместо oCard.request используем стандартный механизм загрузки JSONModel
-      var oModel = new JSONModel()
-
       oModel
-        .loadData('https://jsonplaceholder.typicode.com/todos/1')
+        .loadData('https://jsonplaceholder.typicode.com/todos/1', null, true, 'GET', false)
         .then(function () {
           console.log('--- 6. Данные успешно загружены через loadData!')
           var oData = oModel.getData()
@@ -60,10 +58,6 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
           oData.state = oData.completed ? 'Success' : 'Warning'
 
           oModel.setData(oData) // Обновляем модель дополненными данными
-          oView.setModel(oModel)
-
-          // На всякий случай обновляем текст заголовка напрямую, если биндинг не сработал
-          oView.byId('todoTitle').setText(oData.title)
         })
         .catch(function (oError) {
           console.error('--- 6. Ошибка загрузки данных:', oError)

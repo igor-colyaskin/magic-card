@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.scp/
+.npm/
+target/
+.vscode/
+.env
+Makefile*.mta
+mta_archives
+mta-*
+resources
+webapp/resources/
+archive.zip
+.*_mta_build_tmp
+npm-debug.log*
+*.log
+localService/
