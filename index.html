@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My First Card Host</title>
+    <script
+      id="sap-ui-bootstrap"
+      src="https://ui5.sap.com/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_horizon"
+      data-sap-ui-libs="sap.ui.integration, sap.m"
+      data-sap-ui-resourceroots='{ "magic.card": "./magicCard" }'
+      data-sap-ui-async="true"
+    ></script>
+  </head>
+  <!-- этот код не работает -->
+  <!-- <body class="sapUiBody">
+    <div style="padding: 2rem">
+      <ui-integration-card id="myCard" manifest="./magicCard/manifest.json"> </ui-integration-card>
+    </div>
+  </body> -->
+  <body class="sapUiBody">
+    <div id="cardContainer" style="padding: 2rem"></div>
+
+    <script>
+      window.onload = function () {
+        sap.ui.getCore().attachInit(function () {
+          sap.ui.require(['sap/ui/integration/widgets/Card'], function (Card) {
+            var oCard = new Card({
+              manifest: './magicCard/manifest.json',
+              width: '400px',
+            })
+            oCard.placeAt('cardContainer')
+            console.log('Card instance created and placed')
+          })
+        })
+      }
+    </script>
+  </body>
+</html>

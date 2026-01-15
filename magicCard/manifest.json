@@ -1,0 +1,24 @@
+{
+    "sap.app": {
+        "id": "magic.card",
+        "type": "card"
+    },
+    "sap.card": {
+        "type": "Component",
+        "header": {
+            "title": "My Training Card",
+            "subTitle": "REST API + Component",
+            "icon": { "src": "sap-icon://learning" }
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "magic.card.view.Main",
+            "type": "XML",
+            "async": true
+        },
+        "dependencies": {
+            "libs": { "sap.m": {} }
+        }
+    }
+}

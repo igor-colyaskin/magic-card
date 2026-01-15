@@ -1,0 +1,12 @@
+<mvc:View
+    controllerName="magic.card.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox class="sapUiSmallMargin">
+        <Text id="todoTitle" text="Загрузка..." />
+        <ObjectStatus 
+            id="statusBadge"
+            text="{/completedText}" 
+            state="{/state}" />
+    </VBox>
+</mvc:View>
