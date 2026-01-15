@@ -1,4 +1,4 @@
-sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], function (Controller, JSONModel) {
+sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/StandardListItem'], function (Controller, StandardListItem) {
   'use strict'
 
   return Controller.extend('magic.card.controller.Main', {
@@ -46,18 +46,35 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], fun
     _loadData: function () {
       const oView = this.getView()
       const oModel = oView.getModel()
-      // Вместо oCard.request используем стандартный механизм загрузки JSONModel
+      const oList = oView.byId('todoList')
+
       oModel
-        .loadData('https://jsonplaceholder.typicode.com/todos/1', null, true, 'GET', false)
+        .loadData('https://jsonplaceholder.typicode.com/todos?_limit=5')
         .then(function () {
-          console.log('--- 6. Данные успешно загружены через loadData!')
-          var oData = oModel.getData()
+          const aData = oModel.getData()
 
-          // "Причесываем" данные
-          oData.completedText = oData.completed ? 'Выполнено' : 'В ожидании'
-          oData.state = oData.completed ? 'Success' : 'Warning'
+          aData.forEach(function (oItem) {
+            oItem.completedText = oItem.completed ? 'Done' : 'Pending'
+            oItem.state = oItem.completed ? 'Success' : 'Warning'
+          })
 
-          oModel.setData(oData) // Обновляем модель дополненными данными
+          oModel.setData(aData)
+          // ПРОГРАММНЫЙ БИНДИНГ
+          // 1. Создаем шаблон (как будет выглядеть каждая строка)
+          const oItemTemplate = new StandardListItem({
+            title: '{title}',
+            info: '{completedText}',
+            infoState: '{state}',
+            icon: 'sap-icon://task',
+          })
+
+          // 2. Привязываем агрегацию "items" к корню модели "/"
+          oList.bindItems({
+            path: '/',
+            template: oItemTemplate,
+          })
+
+          console.log('Биндинг списка завершен программно')
         })
         .catch(function (oError) {
           console.error('--- 6. Ошибка загрузки данных:', oError)

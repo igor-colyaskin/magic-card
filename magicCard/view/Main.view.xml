@@ -3,10 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <VBox class="sapUiSmallMargin">
-        <Text id="todoTitle" text="{/title}" />
-        <ObjectStatus 
-            id="statusBadge"
-            text="{/completedText}" 
-            state="{/state}" />
+        <Title text="My To-Do List (REST API)" titleStyle="H3" class="sapUiSmallMarginBottom" />
+        <List id="todoList" noDataText="Загрузка данных из контроллера..."/>
     </VBox>
 </mvc:View>
