@@ -1,19 +1,19 @@
 {
     "sap.app": {
-        "id": "magicCard",
+        "id": "miracleCard",
         "type": "card"
     },
     "sap.card": {
         "type": "Component",
         "header": {
-            "title": "Magic Card",
+            "title": "Miracle Card",
             "subTitle": "REST API + Component",
             "icon": { "src": "sap-icon://learning" }
         }
     },
     "sap.ui5": {
         "rootView": {
-            "viewName": "magicCard.view.Main",
+            "viewName": "miracleCard.view.Miracle",
             "type": "XML",
             "async": true
         },

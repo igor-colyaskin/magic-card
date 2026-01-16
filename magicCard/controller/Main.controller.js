@@ -1,7 +1,7 @@
 sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/StandardListItem'], function (Controller, StandardListItem) {
   'use strict'
 
-  return Controller.extend('magic.card.controller.Main', {
+  return Controller.extend('magicCard.controller.Main', {
     onInit: function () {
       var oComponent = this.getOwnerComponent()
 
@@ -50,7 +50,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/StandardListItem'], function
 
       oModel
         .loadData('https://jsonplaceholder.typicode.com/todos?_limit=5')
-        .then(function () {
+        .then(() => {
           const aData = oModel.getData()
 
           aData.forEach(function (oItem) {
@@ -66,6 +66,8 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/StandardListItem'], function
             info: '{completedText}',
             infoState: '{state}',
             icon: 'sap-icon://task',
+            type: 'Active', // Делаем строку кликабельной (появится рука при наведении)
+            press: this.onItemPress.bind(this),
           })
 
           // 2. Привязываем агрегацию "items" к корню модели "/"
@@ -79,6 +81,24 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/m/StandardListItem'], function
         .catch(function (oError) {
           console.error('--- 6. Ошибка загрузки данных:', oError)
         })
+    },
+
+    onItemPress: function (oEvent) {
+      const oItem = oEvent.getSource()
+      const oContext = oItem.getBindingContext()
+      const sId = oContext.getProperty('id')
+
+      console.log(`Выбран ID: ${sId}`)
+
+      // Используем встроенный механизм действий карточки
+      // Это "чистый" способ сказать Хосту: "Произошло событие!"
+      const oCard = this.getOwnerComponent().getCard()
+      oCard.triggerAction({
+        type: 'Custom',
+        parameters: {
+          selectedId: sId,
+        },
+      })
     },
   })
 })
