@@ -14,6 +14,10 @@
             id="telepathCard" 
             manifest="./cards/telepathPubSub/manifest.json" 
             width="300px" />
+        <w:Card 
+            id="oracleCard" 
+            manifest="./cards/oracleContext/manifest.json" 
+            width="300px" />
         <!-- <w:Card 
             id="masterCard" 
             manifest="./cards/magicCard/manifest.json" 

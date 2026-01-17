@@ -33,6 +33,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], (Co
       // 2. Находим наши карточки по ID
       const oArchimage = this.getView().byId('archimageCard')
       const oTelepath = this.getView().byId('telepathCard')
+      // const oOracle = this.getView().byId('oracleCard')
 
       // 3. Вручную передаем им объект Хоста
       if (oArchimage) {
@@ -41,8 +42,34 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], (Co
       if (oTelepath) {
         oTelepath.setHost(this._oHost)
       }
+      
+      const oHostModel = new JSONModel({
+        selectedId: 'Сигнала нет...',
+      })
+
+      // Называем модель именно "host", чтобы манифесты карточек её видели
+      this._oHost.setModel(oHostModel, 'host')
       // Здесь можно инициализировать общие данные хоста, если нужно
       console.log('Mr. Host (Shell) is ready to coordinate.')
+    },
+
+    onAfterRendering: function () {
+      const oHost = this._oHost // Твой созданный Хост
+      const oOracle = this.getView().byId('oracleCard')
+
+      if (oOracle) {
+        // Привязываем Хост
+        oOracle.setHost(this._oHost)
+
+        // ВРУЧНУЮ пробрасываем модель.
+        // Если автоматика Host API не справляется, это наш железный аргумент.
+        const oHostModel = this._oHost.getModel('host')
+        oOracle.setModel(oHostModel, 'host')
+
+        console.log("Оракул: Связь установлена, модель 'host' передана.")
+      } else {
+        console.error("Оракул не найден! Проверь ID='oracleCard' в Shell.view.xml")
+      }
     },
 
     /**

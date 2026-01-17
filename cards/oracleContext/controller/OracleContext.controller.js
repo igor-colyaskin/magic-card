@@ -1,7 +1,7 @@
 sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
   'use strict'
 
-  return Controller.extend('com.epic.cards.telepathPubSub.controller.TelepathPubSub', {
+  return Controller.extend('com.epic.cards.oracleContext.controller.OracleContext', {
     onInit: function () {
       setTimeout(() => {
         const oCard = this.getOwnerComponent().getCard()

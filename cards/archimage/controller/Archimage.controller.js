@@ -66,6 +66,22 @@ sap.ui.define(
         if (oHost && oHost.publish) {
           oHost.publish('com.epic.telepathy.taskSelected', { taskId: sSelectedId })
         }
+
+        // 2. НОВАЯ МАГИЯ: Обновление контекста (для Оракула)
+        // Мы создаем в контексте Хоста переменную 'selectedId'
+        // if (oHost && oHost.getContext()) {
+        //   oHost.getContext().update({
+        //     selectedId: sId,
+        //   })
+        //   console.log('Archimage: Контекст Хоста обновлен!')
+        // }
+        if (oHost) {
+          const oHostModel = oHost.getModel('host')
+          if (oHostModel) {
+            oHostModel.setProperty('/selectedId', sSelectedId)
+            console.log('Архимаг записал ID в модель Хоста:', sSelectedId)
+          }
+        }
       },
     })
   },

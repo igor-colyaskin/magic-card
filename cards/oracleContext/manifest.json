@@ -1,0 +1,23 @@
+{
+  "sap.app": { "id": "com.epic.cards.oracleContext", "type": "card" },
+  "sap.card": {
+    "type": "Object",
+    "header": {
+      "title": "The Oracle",
+      "subTitle": "Context Mode",
+      "icon": { "src": "sap-icon://fiori-next" }
+    },
+    "content": {
+      "groups": [
+        {
+          "items": [
+            {
+              "label": "Увиденный ID",
+              "value": "{host>/selectedId}"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
