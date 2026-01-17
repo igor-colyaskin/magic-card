@@ -5,6 +5,16 @@
     xmlns:w="sap.ui.integration.widgets">
     <HBox renderType="Bare" justifyContent="Center" class="sapUiMediumMargin">
         <w:Card 
+            id="archimageCard" 
+            manifest="./cards/archimage/manifest.json" 
+            width="400px"
+            class="sapUiMediumMarginEnd"
+            action="onArchimageAction" />
+        <w:Card 
+            id="telepathCard" 
+            manifest="./cards/telepathPubSub/manifest.json" 
+            width="300px" />
+        <!-- <w:Card 
             id="masterCard" 
             manifest="./cards/magicCard/manifest.json" 
             width="400px"
@@ -13,6 +23,6 @@
         <w:Card 
             id="miracleCard" 
             manifest="./cards/miracleCard/manifest.json" 
-            width="400px" />
+            width="400px" /> -->
     </HBox>
 </mvc:View>

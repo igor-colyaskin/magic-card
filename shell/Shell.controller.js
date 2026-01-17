@@ -1,8 +1,46 @@
-sap.ui.define(['sap/ui/core/mvc/Controller'], Controller => {
+sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], (Controller, JSONModel) => {
   'use strict'
 
   return Controller.extend('com.epic.shell.Shell', {
     onInit: function () {
+      // В Shell.controller.js перед созданием Хоста
+      sap.ui.getCore().loadLibrary('sap.ui.integration')
+
+      this._oHost = new sap.ui.integration.Host({
+        id: 'epicHost',
+        extension: 'com/epic/shell/HostExtension', // Путь к файлу
+      })
+
+      // Создаем хранилище подписчиков (наш Hub)
+      this._oHost._mSubscribers = {}
+
+      // Метод подписки
+      this._oHost.subscribe = function (sTopic, fnHandler) {
+        if (!this._mSubscribers[sTopic]) {
+          this._mSubscribers[sTopic] = []
+        }
+        this._mSubscribers[sTopic].push(fnHandler)
+        console.log(`[Hub] Новый подписчик на тему: ${sTopic}`)
+      }
+
+      // Метод публикации
+      this._oHost.publish = function (sTopic, oData) {
+        console.log(`[Hub] Публикация в тему ${sTopic}:`, oData)
+        const aHandlers = this._mSubscribers[sTopic] || []
+        aHandlers.forEach(fn => fn(oData))
+      }
+
+      // 2. Находим наши карточки по ID
+      const oArchimage = this.getView().byId('archimageCard')
+      const oTelepath = this.getView().byId('telepathCard')
+
+      // 3. Вручную передаем им объект Хоста
+      if (oArchimage) {
+        oArchimage.setHost(this._oHost)
+      }
+      if (oTelepath) {
+        oTelepath.setHost(this._oHost)
+      }
       // Здесь можно инициализировать общие данные хоста, если нужно
       console.log('Mr. Host (Shell) is ready to coordinate.')
     },
