@@ -1,0 +1,24 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.epic.shell",
+    "type": "application",
+    "title": "Epic Shell Host",
+    "description": "Container for Integration Cards"
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "com.epic.shell.Shell",
+      "type": "XML",
+      "async": true,
+      "id": "shellView"
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.integration": {}
+      }
+    }
+  }
+}

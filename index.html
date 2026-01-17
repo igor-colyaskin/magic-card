@@ -9,48 +9,26 @@
       data-sap-ui-theme="sap_horizon"
       data-sap-ui-libs="sap.ui.integration, sap.m"
       data-sap-ui-async="true"
+      data-sap-ui-resourceroots='{ "com.epic": "./" }'
     ></script>
   </head>
   <body class="sapUiBody">
-    <div style="display: flex; gap: 20px; padding: 2rem">
+    <div id="content"></div>
+    <!-- <div style="display: flex; gap: 20px; padding: 2rem">
       <div id="magicContainer" style="width: 400px"></div>
       <div id="miracleContainer" style="width: 400px"></div>
-    </div>
+    </div> -->
 
     <script>
-      window.onload = function () {
+      window.onload = () => {
         sap.ui.getCore().attachInit(() => {
-          sap.ui.loader.config({
-            paths: {
-              magicCard: './magicCard',
-              miracleCard: './miracleCard',
-            },
-          })
-          sap.ui.require(['sap/ui/integration/widgets/Card'], Card => {
-            // Первая карточка (Список)
-            const oMagicCard = new Card('magicCard', {
-              manifest: './magicCard/manifest.json',
-              action: function (oEvent) {
-                const oParameters = oEvent.getParameter('parameters')
-                if (oParameters && oParameters.selectedId) {
-                  const sId = oParameters.selectedId
-                  console.log(`Хост поймал ID ${sId} через action`)
-
-                  // Теперь мы можем просто обновить параметры второй карточки!
-                  const oMiracleCard = sap.ui.getCore().byId('miracleCard')
-                  oMiracleCard.setParameters({
-                    todoId: sId,
-                  })
-                }
-              },
-            })
-            oMagicCard.placeAt('magicContainer')
-
-            // Вторая карточка (Детали) - пока укажем тот же манифест для теста
-            const oMiracleCard = new Card('miracleCard', {
-              manifest: './miracleCard/manifest.json',
-            })
-            oMiracleCard.placeAt('miracleContainer')
+          sap.ui.require(['sap/ui/core/ComponentContainer'], ComponentContainer => {
+            new ComponentContainer({
+              name: 'com.epic.shell',
+              height: '100%',
+              settings: { id: 'shell' },
+              async: true,
+            }).placeAt('content')
           })
         })
       }

@@ -1,0 +1,16 @@
+<mvc:View
+    controllerName="com.epic.cards.miracleCard.controller.Miracle"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox class="sapUiSmallMargin">
+        <Title text="Task Details" titleStyle="H3" class="sapUiSmallMarginBottom" />
+        <Label text="Title:" design="Bold" />
+        <Text text="{/title}" class="sapUiSmallMarginBottom" />
+        <Label text="Status:" design="Bold" />
+        <ObjectStatus 
+            text="{/completedText}" 
+            state="{/state}" />
+        <Label text="User ID:" design="Bold" class="sapUiMediumMarginTop" />
+        <Text text="{/userId}" />
+    </VBox>
+</mvc:View>

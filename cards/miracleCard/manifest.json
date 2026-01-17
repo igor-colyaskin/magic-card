@@ -1,6 +1,6 @@
 {
     "sap.app": {
-        "id": "miracleCard",
+        "id": "com.epic.cards.miracleCard",
         "type": "card"
     },
     "sap.card": {
@@ -13,7 +13,7 @@
     },
     "sap.ui5": {
         "rootView": {
-            "viewName": "miracleCard.view.Miracle",
+            "viewName": "com.epic.cards.miracleCard.view.Miracle",
             "type": "XML",
             "async": true
         },

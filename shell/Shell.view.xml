@@ -1,0 +1,18 @@
+<mvc:View 
+    controllerName="com.epic.shell.Shell" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:w="sap.ui.integration.widgets">
+    <HBox renderType="Bare" justifyContent="Center" class="sapUiMediumMargin">
+        <w:Card 
+            id="masterCard" 
+            manifest="./cards/magicCard/manifest.json" 
+            width="400px"
+            class="sapUiMediumMarginEnd"
+            action="onCardAction" />
+        <w:Card 
+            id="miracleCard" 
+            manifest="./cards/miracleCard/manifest.json" 
+            width="400px" />
+    </HBox>
+</mvc:View>

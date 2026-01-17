@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="magicCard.controller.Main"
+    controllerName="com.epic.cards.magicCard.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <VBox class="sapUiSmallMargin">
