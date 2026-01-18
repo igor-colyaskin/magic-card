@@ -1,0 +1,29 @@
+{
+    "sap.app": {
+        "id": "com.epic.cards.archerActions",
+        "type": "card"
+    },
+    "sap.card": {
+        "type": "Component",
+        "header": {
+            "title": "Archer (Actions)",
+            "subTitle": "REST API + Component",
+            "icon": { "src": "sap-icon://learning" }
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.epic.cards.archerActions.view.ArcherActions",
+            "type": "XML",
+            "async": true
+        },
+        "dependencies": {
+            "libs": { "sap.m": {} }
+        },
+        "models": {
+			"": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		}
+    }
+}

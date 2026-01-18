@@ -3,32 +3,37 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:w="sap.ui.integration.widgets">
-    <HBox renderType="Bare" justifyContent="Center" class="sapUiMediumMargin">
+    <HBox renderType="Bare" justifyContent="Center" class="sapUiTinyMargin">
         <w:Card 
             id="archimageCard" 
             manifest="./cards/archimage/manifest.json" 
             width="400px"
-            class="sapUiMediumMarginEnd"
+            class="sapUiTinyMarginEnd"
             action="onArchimageAction" />
         <w:Card 
             id="telepathCard" 
             manifest="./cards/telepathPubSub/manifest.json" 
-            class="sapUiMediumMarginEnd"
+            class="sapUiTinyMarginEnd"
             width="300px" />
         <w:Card 
             id="oracleCard" 
             manifest="./cards/oracleContext/manifest.json" 
-            class="sapUiMediumMarginEnd"
+            class="sapUiTinyMarginEnd"
             width="300px" />
         <w:Card 
             id="oracleComponentCard" 
             manifest="./cards/oracleContextV2/manifest.json" 
-            class="sapUiMediumMarginEnd"
+            class="sapUiTinyMarginEnd"
             width="300px" />
         <w:Card 
             id="chroniclerCard" 
             manifest="./cards/chronicler/manifest.json" 
-            class="sapUiMediumMarginEnd"
+            class="sapUiTinyMarginEnd"
+            width="300px" />
+        <w:Card 
+            id="archerCard" 
+            manifest="./cards/archerActions/manifest.json" 
+            class="sapUiTinyMarginEnd"
             width="300px" />
         <!-- <w:Card 
             id="masterCard" 
