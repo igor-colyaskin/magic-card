@@ -13,10 +13,12 @@
         <w:Card 
             id="telepathCard" 
             manifest="./cards/telepathPubSub/manifest.json" 
+            class="sapUiMediumMarginEnd"
             width="300px" />
         <w:Card 
             id="oracleCard" 
             manifest="./cards/oracleContext/manifest.json" 
+            class="sapUiMediumMarginEnd"
             width="300px" />
         <!-- <w:Card 
             id="masterCard" 

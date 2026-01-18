@@ -62,24 +62,38 @@ sap.ui.define(
 
         const oCard = this.getOwnerComponent().getCard()
         const oHost = sap.ui.getCore().byId(oCard.getHost())
-
+        // 1. Магия для Telepath'а: публикация события через epicSubPub
         if (oHost && oHost.publish) {
           oHost.publish('com.epic.telepathy.taskSelected', { taskId: sSelectedId })
         }
 
         // 2. НОВАЯ МАГИЯ: Обновление контекста (для Оракула)
         // Мы создаем в контексте Хоста переменную 'selectedId'
-        // if (oHost && oHost.getContext()) {
-        //   oHost.getContext().update({
-        //     selectedId: sId,
-        //   })
-        //   console.log('Archimage: Контекст Хоста обновлен!')
-        // }
         if (oHost) {
           const oHostModel = oHost.getModel('host')
           if (oHostModel) {
             oHostModel.setProperty('/selectedId', sSelectedId)
             console.log('Архимаг записал ID в модель Хоста:', sSelectedId)
+            // 2. Явный вызов логики Оракула через его Extension
+
+            // const oOracleCard = sap.ui.getCore().byId("oracleCard") // или через getView().byId
+            const oOracleCard = sap.ui.core.Element.registry.filter(c =>
+              c.getMetadata().getName() === "sap.ui.integration.widgets.Card" &&
+              c.getId().endsWith("oracleCard")
+            )[0]
+            console.log("Найденная карта Оракула:", oOracleCard.onParametersChanged());
+            // console.log("Найденная карта Оракула:", oOracleCard.getParameters());
+
+            // if (oOracleCard) {
+            //   // Вызываем Action программно
+            //   oOracleCard.triggerAction({
+            //     type: 'Custom',
+            //     parameters: {
+            //       method: 'updateAnalysis',
+            //       id: sSelectedId
+            //     }
+            //   })
+            // }
           }
         }
       },
