@@ -3,22 +3,33 @@ sap.ui.define(['sap/ui/core/mvc/Controller'], function (Controller) {
 
   return Controller.extend('com.epic.cards.chronicler.controller.Chronicler', {
     onInit: function () {
-      setTimeout(() => {
-        const oCard = this.getOwnerComponent().getCard()
-        const oHost = sap.ui.getCore().byId(oCard.getHost())
+      // const oModel = this.getView().getModel("chronicler")
+      const oCard = this.getOwnerComponent().getCard()
+      const oHost = sap.ui.getCore().byId(oCard.getHost())
+      const oModel = oHost.getModel("chronicler")
+      this.getView().setModel(oModel)
+      const oList = this.byId("chroniclerList");
 
-        if (oHost && oHost.subscribe) {
-          oHost.subscribe('com.epic.telepathy.taskSelected', oData => {
-            console.log('Telepath: Мысль получена через Резонантор!', oData.taskId)
-            this.loadTaskDetails(oData.taskId)
-          })
-        }
-      }, 100)
-      // Модель уже создана манифестом, просто берем её
-      const oModel = this.getOwnerComponent().getModel()
+      // Создаем шаблон программно
+      const oItemTemplate = new sap.m.StandardListItem({
+        title: "{title}",
+        description: "{at}",
+        info: "{id}"
+      })
 
-      // Можно положить туда начальные данные
-      oModel.setData({ title: 'Select a task from the list' })
+      // Принудительно биндим агрегацию items
+      oList.bindItems({
+        path: "/items",
+        template: oItemTemplate,
+        templateShareable: false
+      })
+
+      if (oHost && oHost.subscribe) {
+        oHost.subscribe("CHRONICLE_UPDATED", () => {
+          console.log('refresh local storage model')
+          oModel.refreshFromStorage()
+        })
+      }
     },
 
     loadTaskDetails: function (sId) {

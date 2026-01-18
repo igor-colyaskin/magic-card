@@ -1,16 +1,9 @@
-<mvc:View
-    controllerName="com.epic.cards.chronicler.controller.Chronicler"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+<mvc:View controllerName="com.epic.cards.chronicler.controller.Chronicler"
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f">
     <VBox class="sapUiSmallMargin">
-        <Title text="Telepath (PubSub)" titleStyle="H3" class="sapUiSmallMarginBottom" />
-        <Label text="Title:" design="Bold" />
-        <Text text="{/title}" class="sapUiSmallMarginBottom" />
-        <Label text="Status:" design="Bold" />
-        <ObjectStatus 
-            text="{/completedText}" 
-            state="{/state}" />
-        <Label text="User ID:" design="Bold" class="sapUiMediumMarginTop" />
-        <Text text="{/userId}" />
+        <Title text="Архивы Хроникера ({/count})" titleStyle="H4" class="sapUiSmallMarginBottom" />
+        <List id="chroniclerList">
+        </List>
+        <Button text="Сжечь архивы" press="localStorage.clear()" type="Reject" class="sapUiSmallMarginTop" />
     </VBox>
 </mvc:View>

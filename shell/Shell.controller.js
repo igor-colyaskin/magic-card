@@ -1,4 +1,4 @@
-sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], (Controller, JSONModel) => {
+sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', "com/epic/helpers/StorageModel"], (Controller, JSONModel, StorageModel) => {
   'use strict'
 
   return Controller.extend('com.epic.shell.Shell', {
@@ -41,13 +41,15 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], (Co
       if (oTelepath) { oTelepath.setHost(this._oHost) }
       if (oOracleV2) { oOracleV2.setHost(this._oHost) }
       if (oChronicler) { oChronicler.setHost(this._oHost) }
-
-      const oHostModel = new JSONModel({
-        selectedId: 'Сигнала нет...',
-      })
+      // эта прокси-модель для LocalStorage
+      this._oStorageModel = new StorageModel()
+      // this.getView().setModel(this._oStorageModel, "chronicler")
+      this._oHost.setModel(this._oStorageModel, "chronicler");
 
       // Называем модель именно "host", чтобы манифесты карточек её видели
+      const oHostModel = new JSONModel({ selectedId: 'Сигнала нет...' })
       this._oHost.setModel(oHostModel, 'host')
+      
       // Здесь можно инициализировать общие данные хоста, если нужно
       console.log('Mr. Host (Shell) is ready to coordinate.')
     },

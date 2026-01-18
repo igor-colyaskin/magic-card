@@ -55,13 +55,19 @@ sap.ui.define(
       },
 
       onItemPress: function (oEvent) {
-        const oContext = oEvent.getSource().getBindingContext()
-        const sSelectedId = oContext.getProperty('id')
+        // const oContext = oEvent.getSource().getBindingContext()
+        // const sSelectedId = oContext.getProperty('id')
+        // const sTitle = oContext.getProperty('title')
+        const oItem = oEvent.getSource().getBindingContext().getObject()
+        const sSelectedId = oItem.id
+        const sTitle = oItem.title
 
         console.log(`Выбран ID: ${sSelectedId}`)
 
         const oCard = this.getOwnerComponent().getCard()
         const oHost = sap.ui.getCore().byId(oCard.getHost())
+        const oStorageModel = oHost ? oHost.getModel("chronicler") : null
+
         // 1. Магия для Telepath'а: публикация события через epicSubPub
         if (oHost && oHost.publish) {
           oHost.publish('com.epic.telepathy.taskSelected', { taskId: sSelectedId })
@@ -81,8 +87,19 @@ sap.ui.define(
               c.getMetadata().getName() === "sap.ui.integration.widgets.Card" &&
               c.getId().endsWith("oracleCard")
             )[0]
-            console.log("Найденная карта Оракула:", oOracleCard.onParametersChanged());
+            console.log("Найденная карта Оракула:", oOracleCard)
           }
+        }
+
+        if (oStorageModel) {
+          // Мы просто добавляем запись в модель, а StorageModel сама 
+          // сделает localStorage.setItem под капотом
+          oStorageModel.addNewEntry({
+            id: sSelectedId,
+            title: sTitle,
+            at: new Date().toLocaleTimeString()
+          })
+          oHost.publish("CHRONICLE_UPDATED")
         }
       },
     })
