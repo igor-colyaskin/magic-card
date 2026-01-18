@@ -1,11 +1,17 @@
 {
-  "sap.app": { "id": "com.epic.cards.oracleContext", "type": "card" },
+  "sap.app": {
+    "id": "com.epic.cards.oracleContext",
+    "type": "card"
+  },
   "sap.card": {
     "type": "Object",
+    "extension": "Extension",
     "header": {
-      "title": "The Oracle",
+      "title": "Oracle Context Object Card",
       "subTitle": "Context Mode",
-      "icon": { "src": "sap-icon://fiori-next" }
+      "icon": {
+        "src": "sap-icon://fiori-next"
+      }
     },
     "content": {
       "groups": [

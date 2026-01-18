@@ -82,18 +82,6 @@ sap.ui.define(
               c.getId().endsWith("oracleCard")
             )[0]
             console.log("Найденная карта Оракула:", oOracleCard.onParametersChanged());
-            // console.log("Найденная карта Оракула:", oOracleCard.getParameters());
-
-            // if (oOracleCard) {
-            //   // Вызываем Action программно
-            //   oOracleCard.triggerAction({
-            //     type: 'Custom',
-            //     parameters: {
-            //       method: 'updateAnalysis',
-            //       id: sSelectedId
-            //     }
-            //   })
-            // }
           }
         }
       },

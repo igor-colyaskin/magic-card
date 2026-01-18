@@ -33,15 +33,12 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel'], (Co
       // 2. Находим наши карточки по ID
       const oArchimage = this.getView().byId('archimageCard')
       const oTelepath = this.getView().byId('telepathCard')
-      // const oOracle = this.getView().byId('oracleCard')
+      const oOracleV2 = this.getView().byId('oracleComponentCard')
 
       // 3. Вручную передаем им объект Хоста
-      if (oArchimage) {
-        oArchimage.setHost(this._oHost)
-      }
-      if (oTelepath) {
-        oTelepath.setHost(this._oHost)
-      }
+      if (oArchimage) { oArchimage.setHost(this._oHost) }
+      if (oTelepath) { oTelepath.setHost(this._oHost) }
+      if (oOracleV2) { oOracleV2.setHost(this._oHost) }
 
       const oHostModel = new JSONModel({
         selectedId: 'Сигнала нет...',

@@ -5,6 +5,9 @@ sap.ui.define(["sap/ui/integration/Extension", "sap/ui/model/json/JSONModel"], f
         init: function () {
             Extension.prototype.init.apply(this, arguments)
             this.setModel(new JSONModel({ analysis: "Жду импульса..." }), "localLogic")
+            var oCard = sap.ui.core.Element.registry.filter(c => c.getId().endsWith("oracleCard"))[0];
+            var oContent = oCard.getAggregation("_content")
+            console.log("Оракул: Расширение инициализировано!", oCard, oContent)
         },
 
         // ЭТОТ МЕТОД — КЛЮЧ К КОНЦЕПЦИИ CONTEXT
