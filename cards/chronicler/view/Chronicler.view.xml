@@ -1,7 +1,7 @@
 <mvc:View controllerName="com.epic.cards.chronicler.controller.Chronicler"
     xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f">
     <VBox class="sapUiSmallMargin">
-        <Title text="Архивы Хроникера ({/count})" titleStyle="H4" class="sapUiSmallMarginBottom" />
+        <Title id="chroniclerTitle" titleStyle="H4" class="sapUiSmallMarginBottom" />
         <List id="chroniclerList">
         </List>
         <Button text="Сжечь архивы" press="localStorage.clear()" type="Reject" class="sapUiSmallMarginTop" />
