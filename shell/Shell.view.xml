@@ -25,6 +25,11 @@
             manifest="./cards/oracleContextV2/manifest.json" 
             class="sapUiMediumMarginEnd"
             width="300px" />
+        <w:Card 
+            id="chroniclerCard" 
+            manifest="./cards/chronicler/manifest.json" 
+            class="sapUiMediumMarginEnd"
+            width="300px" />
         <!-- <w:Card 
             id="masterCard" 
             manifest="./cards/magicCard/manifest.json" 
