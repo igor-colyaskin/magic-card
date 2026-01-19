@@ -1,0 +1,21 @@
+<mvc:View controllerName="com.epic.cards.stalkerURL.controller.Platform"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"  xmlns:core="sap.ui.core">
+    
+    <m:Panel width="400px" class="sapUiNoContentPadding sapUiCard">
+        <m:headerToolbar>
+            <m:Toolbar height="3rem">
+                <core:Icon src="sap-icon://home" class="sapUiSmallMarginBegin" />
+                <m:Title text="Локация: Платформа 9¾" />
+            </m:Toolbar>
+        </m:headerToolbar>
+        <m:content>
+            <m:VBox alignItems="Center" justifyContent="Center" class="sapUiMediumMargin">
+                <m:Title text="Всё спокойно" level="H4" />
+                <m:Text text="Выберите артефакт в башне Архимага, чтобы отправиться в Зазеркалье." 
+                        textAlign="Center" class="sapUiSmallMarginTop" />
+                
+                <core:Icon src="sap-icon:// tacometer" size="2rem" color="Default" class="sapUiMediumMarginTop" />
+            </m:VBox>
+        </m:content>
+    </m:Panel>
+</mvc:View>

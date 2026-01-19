@@ -59,15 +59,19 @@ sap.ui.define(
         const sSelectedId = oItem.id
         const sTitle = oItem.title
 
-        console.log(`Выбран ID: ${sSelectedId}`)
-
-        const oCard = this.getOwnerComponent().getCard()
-        const oHost = sap.ui.getCore().byId(oCard.getHost())
+        const oComponent = this.getOwnerComponent();
+        const oCard = oComponent.getCard()
+        const oHost = sap.ui.getCore().byId("epicHost");
+        // const oHost = oCard.getHost();
+        // const oHost = oComponent._oHost;
         const oStorageModel = oHost ? oHost.getModel("chronicler") : null
+
+        console.log(`Выбран ID: ${sSelectedId}`)
 
         // 1. Магия для Telepath'а: публикация события через epicSubPub
         if (oHost && oHost.publish) {
           oHost.publish('com.epic.telepathy.taskSelected', { taskId: sSelectedId })
+          oHost.publish("StalkerTeleport", {targetId: sSelectedId})
         }
 
         // 2. НОВАЯ МАГИЯ: Обновление контекста (для Оракула)

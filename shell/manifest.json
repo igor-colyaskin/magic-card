@@ -19,6 +19,38 @@
         "sap.m": {},
         "sap.ui.integration": {}
       }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "com.epic.cards.stalkerURL.view",
+        "controlId": "stalkerCard",
+        "controlAggregation": "items",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "home",
+          "pattern": "",
+          "target": "platform"
+        },
+        {
+          "name": "mirror",
+          "pattern": "mirror/{id}",
+          "target": "mirror"
+        }
+      ],
+      "targets": {
+        "platform": {
+          "viewName": "Platform",
+          "clearControlAggregation": true
+        },
+        "mirror": {
+          "viewName": "MirrorWorld",
+          "clearControlAggregation": true
+        }
+      }
     }
   }
 }

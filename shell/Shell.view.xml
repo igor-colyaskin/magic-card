@@ -37,6 +37,12 @@
             id="alchemistCard" 
             manifest="./cards/alchemistAction/manifest.json" 
             class="sapUiTinyMarginEnd"
+            visible="false"
             width="300px" />
+        <VBox id="stalkerCard">
+            <layoutData>
+                <FlexItemData growFactor="1" />
+            </layoutData>
+        </VBox>
     </HBox>
 </mvc:View>

@@ -1,0 +1,19 @@
+<mvc:View controllerName="com.epic.cards.stalkerURL.controller.MirrorWorld"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+    
+    <m:Panel width="300px" accessibleRole="Region" class="sapUiNoContentPadding sapUiCard">
+        <m:headerToolbar>
+            <m:Toolbar height="3rem">
+                <core:Icon src="sap-icon://dimension" class="sapUiSmallMarginBegin" />
+                <m:Title text="Зона: Зазеркалье" />
+                <m:ToolbarSpacer />
+            </m:Toolbar>
+        </m:headerToolbar>
+        <m:content>
+            <m:VBox alignItems="Center" class="sapUiMediumMargin">
+                <m:Text id="mirrorIDText" text="Считывание..." />
+                <m:Button text="Назад" press="onBack" class="sapUiSmallMarginTop" />
+            </m:VBox>
+        </m:content>
+    </m:Panel>
+</mvc:View>
