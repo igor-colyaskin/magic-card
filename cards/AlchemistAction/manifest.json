@@ -5,9 +5,16 @@
     },
     "sap.card": {
         "type": "Component",
+        "configuration": {
+            "parameters": {
+                "recipe": {
+                    "value": "Ожидание ингредиентов..."
+                }
+            }
+        },
         "header": {
-            "title": "Archer (Actions)",
-            "subTitle": "REST API + Component",
+            "title": "Alchemist (Action)",
+            "subTitle": "Готов к работе...",
             "icon": { "src": "sap-icon://learning" }
         }
     },

@@ -39,6 +39,17 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', "com
 
       // 3. Вручную передаем им объект Хоста
       if (oArchimage) { oArchimage.setHost(this._oHost) }
+      oArchimage.attachAction(function (oEvent) {
+        const oParameters = oEvent.getParameter("parameters")
+
+        if (oParameters.method === "TRANSMUTE") {
+          const sNewRecipe = `Рецепт #${oParameters.id}: ${oParameters.title}`
+
+          // 2. Прямая трансмутация параметров!
+          oAlchemist.setParameters({ "recipe": sNewRecipe })
+          console.log("[Host] Параметры Алхимика обновлены!")
+        }
+      })
       if (oTelepath) { oTelepath.setHost(this._oHost) }
       if (oOracleV2) { oOracleV2.setHost(this._oHost) }
       if (oChronicler) { oChronicler.setHost(this._oHost) }
@@ -46,12 +57,12 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', "com
       // эта прокси-модель для LocalStorage
       this._oStorageModel = new StorageModel()
       // this.getView().setModel(this._oStorageModel, "chronicler")
-      this._oHost.setModel(this._oStorageModel, "chronicler");
+      this._oHost.setModel(this._oStorageModel, "chronicler")
 
       // Называем модель именно "host", чтобы манифесты карточек её видели
       const oHostModel = new JSONModel({ selectedId: 'Сигнала нет...' })
       this._oHost.setModel(oHostModel, 'host')
-      
+
       // Здесь можно инициализировать общие данные хоста, если нужно
       console.log('Mr. Host (Shell) is ready to coordinate.')
     },

@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="com.epic.cards.alchemistAction.controller.AlchemistAction"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox justifyContent="Center" alignItems="Center" height="100px">
+        <Title text="Магический Реактор" />
+        <Text text="{parameters>/recipe/value}" 
+              class="sapUiMediumMarginTop" />
+    </VBox>
+</mvc:View>

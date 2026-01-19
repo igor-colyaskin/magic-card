@@ -1,9 +1,0 @@
-<mvc:View
-    controllerName="com.epic.cards.alchemistAction.controller.AlchemistAction"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <VBox class="sapUiSmallMargin">
-        <Title text="Alchemist (Actions)" titleStyle="H3" class="sapUiSmallMarginBottom" />
-        <List id="todoList" noDataText="Загрузка данных из контроллера..."/>
-    </VBox>
-</mvc:View>

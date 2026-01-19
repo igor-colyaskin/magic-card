@@ -14,11 +14,13 @@
             id="telepathCard" 
             manifest="./cards/telepathPubSub/manifest.json" 
             class="sapUiTinyMarginEnd"
+            visible="false"
             width="300px" />
         <w:Card 
             id="oracleCard" 
             manifest="./cards/oracleContext/manifest.json" 
             class="sapUiTinyMarginEnd"
+            visible="false"
             width="300px" />
         <w:Card 
             id="oracleComponentCard" 
@@ -28,6 +30,7 @@
         <w:Card 
             id="chroniclerCard" 
             manifest="./cards/chronicler/manifest.json" 
+            visible="false"
             class="sapUiTinyMarginEnd"
             width="300px" />
         <w:Card 
@@ -35,15 +38,5 @@
             manifest="./cards/alchemistAction/manifest.json" 
             class="sapUiTinyMarginEnd"
             width="300px" />
-        <!-- <w:Card 
-            id="masterCard" 
-            manifest="./cards/magicCard/manifest.json" 
-            width="400px"
-            class="sapUiMediumMarginEnd"
-            action="onCardAction" />
-        <w:Card 
-            id="miracleCard" 
-            manifest="./cards/miracleCard/manifest.json" 
-            width="400px" /> -->
     </HBox>
 </mvc:View>

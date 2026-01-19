@@ -55,9 +55,6 @@ sap.ui.define(
       },
 
       onItemPress: function (oEvent) {
-        // const oContext = oEvent.getSource().getBindingContext()
-        // const sSelectedId = oContext.getProperty('id')
-        // const sTitle = oContext.getProperty('title')
         const oItem = oEvent.getSource().getBindingContext().getObject()
         const sSelectedId = oItem.id
         const sTitle = oItem.title
@@ -101,6 +98,16 @@ sap.ui.define(
           })
           oHost.publish("CHRONICLE_UPDATED")
         }
+
+        // Триггерим экшен карточки для Алхимика
+        oCard.triggerAction({
+          type: 'Custom',
+          parameters: {
+            method: 'TRANSMUTE',
+            id: oItem.id,
+            title: oItem.title
+          }
+        })
       },
     })
   },
