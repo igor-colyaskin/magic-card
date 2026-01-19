@@ -1,6 +1,6 @@
 {
     "sap.app": {
-        "id": "com.epic.cards.archerActions",
+        "id": "com.epic.cards.alchemistAction",
         "type": "card"
     },
     "sap.card": {
@@ -13,7 +13,7 @@
     },
     "sap.ui5": {
         "rootView": {
-            "viewName": "com.epic.cards.archerActions.view.ArcherActions",
+            "viewName": "com.epic.cards.alchemistAction.view.AlchemistAction",
             "type": "XML",
             "async": true
         },

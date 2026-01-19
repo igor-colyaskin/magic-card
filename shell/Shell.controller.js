@@ -35,14 +35,14 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', "com
       const oTelepath = this.getView().byId('telepathCard')
       const oOracleV2 = this.getView().byId('oracleComponentCard')
       const oChronicler = this.getView().byId('chroniclerCard')
-      const oArcher = this.getView().byId('archerCard')
+      const oAlchemist = this.getView().byId('alchemistCard')
 
       // 3. Вручную передаем им объект Хоста
       if (oArchimage) { oArchimage.setHost(this._oHost) }
       if (oTelepath) { oTelepath.setHost(this._oHost) }
       if (oOracleV2) { oOracleV2.setHost(this._oHost) }
       if (oChronicler) { oChronicler.setHost(this._oHost) }
-      if (oArcher) { oArcher.setHost(this._oHost) }
+      if (oAlchemist) { oAlchemist.setHost(this._oHost) }
       // эта прокси-модель для LocalStorage
       this._oStorageModel = new StorageModel()
       // this.getView().setModel(this._oStorageModel, "chronicler")

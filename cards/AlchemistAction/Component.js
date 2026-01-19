@@ -1,7 +1,7 @@
 sap.ui.define(['sap/ui/core/UIComponent'], function (UIComponent) {
   'use strict'
 
-  return UIComponent.extend('com.epic.cards.archerActions.Component', {
+  return UIComponent.extend('com.epic.cards.alchemistAction.Component', {
     init: function () {
       UIComponent.prototype.init.call(this)
     },

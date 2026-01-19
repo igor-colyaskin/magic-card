@@ -31,8 +31,8 @@
             class="sapUiTinyMarginEnd"
             width="300px" />
         <w:Card 
-            id="archerCard" 
-            manifest="./cards/archerActions/manifest.json" 
+            id="alchemistCard" 
+            manifest="./cards/alchemistAction/manifest.json" 
             class="sapUiTinyMarginEnd"
             width="300px" />
         <!-- <w:Card 
