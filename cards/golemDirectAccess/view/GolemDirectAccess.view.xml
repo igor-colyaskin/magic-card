@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="com.epic.cards.golemDirectAccess.controller.GolemDirectAccess"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox class="sapUiSmallMargin">
+        <Title text="Golem (DirectAccess)" titleStyle="H3" class="sapUiSmallMarginBottom" />
+        <Text id="golemTaskDisplay" text="Ожидаю приказа..." class="sapUiMediumMarginBottom" />
+        <Button text="Сбросить Голема" press="onReset" width="100%"/>
+    </VBox>
+</mvc:View>

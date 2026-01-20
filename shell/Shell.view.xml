@@ -25,6 +25,7 @@
         <w:Card 
             id="oracleComponentCard" 
             manifest="./cards/oracleContextV2/manifest.json" 
+            visible="false"
             class="sapUiTinyMarginEnd"
             width="300px" />
         <w:Card 
@@ -38,6 +39,12 @@
             manifest="./cards/alchemistAction/manifest.json" 
             class="sapUiTinyMarginEnd"
             visible="false"
+            width="300px" />
+        <w:Card 
+            id="golemCard" 
+            manifest="./cards/golemDirectAccess/manifest.json" 
+            class="sapUiTinyMarginEnd"
+            visible="true"
             width="300px" />
         <VBox id="stalkerCard">
             <layoutData>
